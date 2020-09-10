@@ -70,3 +70,104 @@ let row = vec![
     SpreadsheetCell::Float(10.12),
 ];
 ```
+
+## Strings
+
+```
+let mut s = String::new();
+
+let s = "initial contents".to_string();
+let s = String::from("initial contents");
+
+// Pushing into Strings
+let mut s = String::from("foo");
+s.push_str("bar");
+s.push('b');
+
+// Concatination
+let s1 = String::from("Hello, ");
+let s2 = String::from("world!");
+let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+
+// Formatting
+let s1 = String::from("tic");
+let s2 = String::from("tac");
+let s3 = String::from("toe");
+
+let s = format!("{}-{}-{}", s1, s2, s3);
+```
+
+**Note** that Strings in Rust do not supppot indexing to access a single character because UTF-8 encoding might cause some unexpected results.
+It is possible to slice a String with a range, but it should be done carefully, as it might cause panics:
+
+```
+let hello = "Здравствуйте";
+
+let s = &hello[0..4];   // OK. s is "Зд"
+
+let s = &hello[0..1];   // Panic! s cannot be a valid char.
+```
+
+### Iterating Over a String
+Characters:
+```
+for c in "नमस्ते".chars() {
+    println!("{}", c);
+}
+
+/* Output:
+न
+म
+स
+्
+त
+े
+*/
+```
+Bytes:
+```
+for b in "नमस्ते".bytes() {
+    println!("{}", b);
+}
+
+/* Output:
+224
+164
+...
+165
+135
+*/
+```
+
+## Hash Maps
+```
+use std::collections::HashMap;
+
+let mut scores = HashMap::new();
+
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+// Only insert if key does not already exist
+scores.entry(String::from("Blue")).or_insert(50);
+
+// Value access. Returns an Option
+let score = scores.get(&team_name);
+
+// Iteration
+for (key, value) in &scores {
+    println!("{}: {}", key, value);
+}
+```
+Creating using `collect`:
+```
+use std::collections::HashMap;
+
+let teams = vec![String::from("Blue"), String::from("Yellow")];
+let initial_scores = vec![10, 50];
+
+let mut scores: HashMap<_, _> =
+    teams.into_iter().zip(initial_scores.into_iter()).collect();
+```
+**Note** that a hash map copies `Copy`able values (like `i32`) but takes ownership over owned values (like `String`).
+
