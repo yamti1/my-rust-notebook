@@ -1,10 +1,12 @@
-# Constants
+# Basic Rust Syntax
+
+## Constants
 ```
 const SERVER_PORT: u32 = 8000;
 ```
 Contants are evaluated at compile time.
 
-# Functions
+## Functions
 
 ```
 // Decleration
@@ -16,9 +18,9 @@ fn add(a: i32, b: i32) -> i32 {
 let sum = add(5, 6);
 ```
 
-# Control Flow
+## Control Flow
 
-## Conditions
+### Conditions
 ```
 fn main() {
     let number = 6;
@@ -41,9 +43,9 @@ let number = if condition { 5 } else { 6 };
 ```
 * The condition must be bool.
 
-## Loops
+### Loops
 
-### Loop
+#### Loop
 
 Loop forever. Stops on `break` or on external signal.
 ```
@@ -67,7 +69,7 @@ fn main() {
 }
 ```
 
-### For Loop
+#### For Loop
 
 Iterate over a collection
 ```
@@ -90,7 +92,7 @@ fn main() {
 }
 ```
 
-### While Loop
+#### While Loop
 
 ```
 while number != 0 {
@@ -99,7 +101,7 @@ while number != 0 {
     number -= 1;
 }
 ```
-# Structs
+## Structs
 
 ```
 struct User {
@@ -150,7 +152,7 @@ impl Rectangle {
 }
 ```
 
-# Enums
+## Enums
 ```
 enum IpAddrKind {
     V4,
@@ -171,7 +173,7 @@ let home = IpAddr::V4(127, 0, 0, 1);
 ```
 Methods can be defined on enums the same way as on structs.
 
-## The Option Enum
+### The Option Enum
 A bult-in enum that provides null-safety:
 ```
 enum Option<T> {
@@ -187,7 +189,7 @@ let some_string = Some("a string");
 let absent_number: Option<i32> = None;
 ```
 
-## Pattern Matching
+### Pattern Matching
 ```
 enum Coin {
     Penny,
