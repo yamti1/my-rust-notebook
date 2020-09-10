@@ -4,7 +4,7 @@
 
 Normal references are immutable. 
 Holding a reference to something means you do not own it.
-```
+```rust
 fn foo(val: &i32) {          // val is a reference to i32.
     println!("{}", val)
     val = val + 1;          // Illegal. val is an immutable reference.
@@ -16,7 +16,7 @@ foo(&a);
 ```
 
 Mutable references allow mutation of the referee.
-```
+```rust
 fn foo(val: &mut i32) {     // val is a mutable reference to i32.
     println!("{}", val)
     val = val + 1;          // OK
@@ -29,7 +29,7 @@ foo(&mut a);
 At any given time, you can have either one mutable reference or any number of immutable references.
 
 **Note** that references live in a scope untli their last usage in it. So this code is leagal:
-```
+```rust
 fn main() {
     let mut s = String::from("hello");
 
@@ -47,7 +47,7 @@ fn main() {
 
 ## Slices
 
-```
+```rust
 fn main() {
     let s = String::from("hello world");
 
@@ -73,7 +73,7 @@ Slices are immutable references so Rust makes sure that Slices are always valid.
 
 ### Array Slices
 
-```
+```rust
 let a = [1, 2, 3, 4, 5];
 let slice = &a[1..3];
 let slice2: &[i32] = &a[1..2];  // With type annotation

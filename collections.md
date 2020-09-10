@@ -2,7 +2,7 @@
 
 ## Tuples
 
-```
+```rust
 let tup = (500, 6.4, 1);
 let tup: (i32, f64, u8) = (500, 6.4, 1);  // With type annotations
 let (x, y, z) = tup; 					  // Tuple destructuring
@@ -12,7 +12,7 @@ let six_point_four = tup.1;
 
 ## Arrays
 
-```
+```rust
 let a = [1, 2, 3, 4, 5];
 let a: [i32; 5] = [1, 2, 3, 4, 5];	// With type annotations
 let a = [3; 5]; 					// Same as `let a = [3, 3, 3, 3, 3];`
@@ -22,7 +22,7 @@ let error = a[5]; 					// Access to an index too big causes panic
 
 ## Vectors
 
-```
+```rust
 let v: Vec<i32> = Vec::new();   // New vector
 let v = vec![1, 2, 3];          // New vector macro
 v.push(5);                      // Add a value to the vector
@@ -36,7 +36,7 @@ match v.get(2) {                // Returns None if out of range
 ```
 ### Vector Ownership
 The following won't compile because mutating the vector while there is a reference to an element in it might cause the reference to become invalid (the vector might get reallocated).
-```
+```rust
 let mut v = vec![1, 2, 3, 4, 5];
 
 let first = &v[0];
@@ -44,7 +44,7 @@ let first = &v[0];
 v.push(6);
 ```
 ### Vector Iteration
-```
+```rust
 let v = vec![100, 32, 57];
 for i in &v {
     println!("{}", i);
@@ -57,7 +57,7 @@ for i in &mut v {
 }
 ```
 ### Different Type in a Vector with Enum
-```
+```rust
 enum SpreadsheetCell {
     Int(i32),
     Float(f64),
@@ -73,7 +73,7 @@ let row = vec![
 
 ## Strings
 
-```
+```rust
 let mut s = String::new();
 
 let s = "initial contents".to_string();
@@ -100,7 +100,7 @@ let s = format!("{}-{}-{}", s1, s2, s3);
 **Note** that Strings in Rust do not supppot indexing to access a single character because UTF-8 encoding might cause some unexpected results.
 It is possible to slice a String with a range, but it should be done carefully, as it might cause panics:
 
-```
+```rust
 let hello = "Здравствуйте";
 
 let s = &hello[0..4];   // OK. s is "Зд"
@@ -110,7 +110,7 @@ let s = &hello[0..1];   // Panic! s cannot be a valid char.
 
 ### Iterating Over a String
 Characters:
-```
+```rust
 for c in "नमस्ते".chars() {
     println!("{}", c);
 }
@@ -125,7 +125,7 @@ for c in "नमस्ते".chars() {
 */
 ```
 Bytes:
-```
+```rust
 for b in "नमस्ते".bytes() {
     println!("{}", b);
 }
@@ -140,7 +140,7 @@ for b in "नमस्ते".bytes() {
 ```
 
 ## Hash Maps
-```
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -160,7 +160,7 @@ for (key, value) in &scores {
 }
 ```
 Creating using `collect`:
-```
+```rust
 use std::collections::HashMap;
 
 let teams = vec![String::from("Blue"), String::from("Yellow")];

@@ -1,14 +1,14 @@
 # Basic Rust Syntax
 
 ## Constants
-```
+```rust
 const SERVER_PORT: u32 = 8000;
 ```
 Contants are evaluated at compile time.
 
 ## Functions
 
-```
+```rust
 // Decleration
 fn add(a: i32, b: i32) -> i32 {
     a + b 	// No semicolon to mark retrun expression
@@ -21,7 +21,7 @@ let sum = add(5, 6);
 ## Control Flow
 
 ### Conditions
-```
+```rust
 fn main() {
     let number = 6;
 
@@ -48,7 +48,7 @@ let number = if condition { 5 } else { 6 };
 #### Loop
 
 Loop forever. Stops on `break` or on external signal.
-```
+```rust
 loop {
 	println!("again!");
 }
@@ -72,7 +72,7 @@ fn main() {
 #### For Loop
 
 Iterate over a collection
-```
+```rust
 fn main() {
     let a = [10, 20, 30, 40, 50];
 
@@ -83,7 +83,7 @@ fn main() {
 ```
 
 Iterate over a range
-```
+```rust
 fn main() {
     for number in (1..4).rev() {
         println!("{}!", number);
@@ -94,7 +94,7 @@ fn main() {
 
 #### While Loop
 
-```
+```rust
 while number != 0 {
     println!("{}!", number);
 
@@ -103,7 +103,7 @@ while number != 0 {
 ```
 ## Structs
 
-```
+```rust
 struct User {
     username: String,
     email: String,
@@ -112,7 +112,7 @@ struct User {
 }
 ```
 Field Init shorthand:
-```
+```rust
 fn build_user(email: String, username: String) -> User {
     User {
         email,          // instead of `email: email`
@@ -123,7 +123,7 @@ fn build_user(email: String, username: String) -> User {
 }
 ```
 Struct Update syntax:
-```
+```rust
 let user2 = User {
     email: String::from("another@example.com"),
     username: String::from("anotherusername567"),
@@ -131,7 +131,7 @@ let user2 = User {
 };
 ```
 Tuple structs:
-```
+```rust
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
@@ -139,7 +139,7 @@ let black = Color(0, 0, 0);
 let origin = Point(0, 0, 0);
 ```
 Adding functionallity to structs:
-```
+```rust
 struct Rectangle {
     width: u32,
     height: u32,
@@ -153,7 +153,7 @@ impl Rectangle {
 ```
 
 ## Enums
-```
+```rust
 enum IpAddrKind {
     V4,
     V6,
@@ -163,7 +163,7 @@ let four = IpAddrKind::V4;
 let six = IpAddrKind::V6;
 ```
 Adding data to an enum:
-```
+```rust
 enum IpAddr {
     V4(u8, u8, u8, u8),,
     V6(String),
@@ -175,14 +175,14 @@ Methods can be defined on enums the same way as on structs.
 
 ### The Option Enum
 A bult-in enum that provides null-safety:
-```
+```rust
 enum Option<T> {
     Some(T),
     None,
 }
 ```
 Examples:
-```
+```rust
 let some_number = Some(5);
 let some_string = Some("a string");
 
@@ -190,7 +190,7 @@ let absent_number: Option<i32> = None;
 ```
 
 ### Pattern Matching
-```
+```rust
 enum Coin {
     Penny,
     Nickel,
@@ -208,7 +208,7 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 ```
 Allows for a default pattern:
-```
+```rust
 let some_u8_value = 0u8;
     match some_u8_value {
     1 => println!("one"),
@@ -219,7 +219,7 @@ let some_u8_value = 0u8;
 }
 ```
 if-let:
-```
+```rust
 if let Some(3) = some_u8_value {
     println!("three");
 }
