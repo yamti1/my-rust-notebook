@@ -93,4 +93,4 @@ fn read_username_from_file() -> Result<String, io::Error> {
     fs::read_to_string("hello.txt")
 }
 ```
-**Also note** that in the `main` function the `?` operator is allowed but the return type of the function should be `Result<(), Box<dyn Error>>`. `Box<dyn Error>` means "any kind of error".
+**Also note** that in the `main` function the `?` operator is allowed but the return type of the function should be `Result<(), Box<dyn Error>>`. `Box<dyn Error>` means "any kind of error".`
